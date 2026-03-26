@@ -1,5 +1,5 @@
 <?php
 
-use VendorName\Skeleton\Tests\TestCase;
+use Orchestra\Testbench\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

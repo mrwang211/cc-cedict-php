@@ -1,24 +1,23 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "mrwang211/cc-cedict",
+    "description": "Parser and downloader for the CC-CEDICT chinese dictionary https://www.mdbg.net/chinese/dictionary?page=cedict",
     "keywords": [
-        ":vendor_name",
+        "mrwang211",
         "laravel",
-        ":package_slug"
+        "cc-cedict"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/mrwang211/cc-cedict-php",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "mrwang211",
+            "email": "86845476+Iampersoncool@users.noreply.github.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.4",
-        "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^11.0||^12.0"
+        "mrwang211/pinyin-pro": "^1.0"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
@@ -30,18 +29,16 @@
         "pestphp/pest-plugin-laravel": "^4.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-deprecation-rules": "^2.0",
-        "phpstan/phpstan-phpunit": "^2.0",
-        "spatie/laravel-ray": "^1.35"
+        "phpstan/phpstan-phpunit": "^2.0"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Mrwang211\\CcCedictPhp\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Mrwang211\\CcCedictPhp\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -60,16 +57,7 @@
             "phpstan/extension-installer": true
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
-            }
-        }
-    },
+    "extra": {},
     "minimum-stability": "dev",
     "prefer-stable": true
 }
