@@ -38,7 +38,6 @@ class CcEdictParser
         );
     }
 
-    // TODO: rewrite this
     private function parseLine(string $line): ?Definition
     {
         if (str_starts_with($line, self::COMMENT_PREFIX)) {
