@@ -2,7 +2,7 @@
 
 namespace Mrwang211\CcCedictPhp;
 
-class Word
+class Definition
 {
     private string $simplified;
 
