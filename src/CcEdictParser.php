@@ -20,7 +20,7 @@ class CcEdictParser
     }
 
     /**
-     * @return array<Word>
+     * @return array<Definition>
      */
     public function parseDictionaryContents(string $contents): array
     {
@@ -31,27 +31,15 @@ class CcEdictParser
 
     public function convertAllPinyinTonesInBracketsInPlace(string $str): string
     {
-        $result = StringUtils::between($str, self::OPEN_BRACKET, self::CLOSE_BRACKET);
-
-        if ($result === null) {
-            return $str;
-        }
-
-        $answer = '';
-
-        while ($result != null) {
-            [$pinyinToConvert, $idxOfOpenBracket, $idxOfCloseBracket] = $result;
-
-            $answer .= mb_substr($str, 0, $idxOfOpenBracket + 1).$this->pinyinPro->convert($pinyinToConvert).self::CLOSE_BRACKET;
-            $str = mb_substr($str, $idxOfCloseBracket + 1);
-            $result = StringUtils::between($str, self::OPEN_BRACKET, self::CLOSE_BRACKET);
-        }
-
-        return $answer.$str;
+        return preg_replace_callback(
+            '/\[([^]]+)]/u',
+            fn (array $matches) => self::OPEN_BRACKET.$this->pinyinPro->convert($matches[1]).self::CLOSE_BRACKET,
+            $str
+        );
     }
 
     // TODO: rewrite this
-    private function parseLine(string $line): ?Word
+    private function parseLine(string $line): ?Definition
     {
         if (str_starts_with($line, self::COMMENT_PREFIX)) {
             return null;
@@ -59,14 +47,14 @@ class CcEdictParser
 
         $idxOfOpenBracket = mb_strpos($line, self::OPEN_BRACKET);
 
-        [$betweenSlashes] = StringUtils::betweenFirst($line, '/', '/');
-        $english = $this->convertAllPinyinTonesInBracketsInPlace($betweenSlashes);
+        $english = StringUtils::betweenFirstAndLast($line, '/', '/');
+        $english = $this->convertAllPinyinTonesInBracketsInPlace($english);
 
         [$traditional, $simplified] = explode(' ', mb_trim(mb_substr($line, 0, $idxOfOpenBracket - 1)));
 
-        [$rawPinyin] = StringUtils::between($line, self::OPEN_BRACKET, self::CLOSE_BRACKET);
+        $rawPinyin = StringUtils::between($line, self::OPEN_BRACKET, self::CLOSE_BRACKET);
         $pinyinWithTones = $this->pinyinPro->convert($rawPinyin);
 
-        return new Word($simplified, $traditional, $pinyinWithTones, $english);
+        return new Definition($simplified, $traditional, $pinyinWithTones, $english);
     }
 }
