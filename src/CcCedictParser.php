@@ -4,7 +4,7 @@ namespace Mrwang211\CcCedictPhp;
 
 use Mrwang211\PinyinPro\PinyinPro;
 
-class CcEdictParser
+class CcCedictParser
 {
     private const string COMMENT_PREFIX = '#';
 

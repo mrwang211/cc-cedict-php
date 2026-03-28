@@ -3,8 +3,8 @@
 namespace Mrwang211\CcCedictPhp\Tests;
 
 use Exception;
-use Mrwang211\CcCedictPhp\CcEdictDownloader;
-use Mrwang211\CcCedictPhp\CcEdictParser;
+use Mrwang211\CcCedictPhp\CcCedictDownloader;
+use Mrwang211\CcCedictPhp\CcCedictParser;
 use Mrwang211\CcCedictPhp\Definition;
 use Mrwang211\PinyinPro\PinyinPro;
 
@@ -22,7 +22,7 @@ class Cache
         if (file_exists(self::DICTIONARY_PATH)) {
             return file_get_contents(self::DICTIONARY_PATH);
         } else {
-            $downloader = new CcEdictDownloader;
+            $downloader = new CcCedictDownloader;
             $contents = $downloader->fetchDictionaryContents();
 
             if (! $contents) {
@@ -44,7 +44,7 @@ class Cache
             return self::$dictionary;
         }
 
-        $parser = new CcEdictParser(new PinyinPro);
+        $parser = new CcCedictParser(new PinyinPro);
         self::$dictionary = $parser->parseDictionaryContents(self::getDictionaryContents());
 
         return self::$dictionary;
