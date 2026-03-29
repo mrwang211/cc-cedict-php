@@ -20,7 +20,7 @@ class CcCedictParser
     }
 
     /**
-     * @return array<Definition>
+     * @return array<Term>
      */
     public function parseDictionaryContents(string $contents): array
     {
@@ -38,7 +38,7 @@ class CcCedictParser
         );
     }
 
-    private function parseLine(string $line): ?Definition
+    private function parseLine(string $line): ?Term
     {
         if (str_starts_with($line, self::COMMENT_PREFIX)) {
             return null;
@@ -54,6 +54,6 @@ class CcCedictParser
         $rawPinyin = StringUtils::between($line, self::OPEN_BRACKET, self::CLOSE_BRACKET);
         $pinyinWithTones = $this->pinyinPro->convert($rawPinyin);
 
-        return new Definition($simplified, $traditional, $pinyinWithTones, $english);
+        return new Term($simplified, $traditional, $pinyinWithTones, $english);
     }
 }

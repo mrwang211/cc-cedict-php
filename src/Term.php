@@ -2,7 +2,7 @@
 
 namespace Mrwang211\CcCedictPhp;
 
-class Definition
+class Term
 {
     private string $simplified;
 

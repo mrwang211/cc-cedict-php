@@ -5,7 +5,7 @@ namespace Mrwang211\CcCedictPhp\Tests;
 use Exception;
 use Mrwang211\CcCedictPhp\CcCedictDownloader;
 use Mrwang211\CcCedictPhp\CcCedictParser;
-use Mrwang211\CcCedictPhp\Definition;
+use Mrwang211\CcCedictPhp\Term;
 use Mrwang211\PinyinPro\PinyinPro;
 
 class Cache
@@ -13,7 +13,7 @@ class Cache
     private const string DICTIONARY_PATH = 'build/cc-edict.txt';
 
     /**
-     * @var array<Definition>
+     * @var array<Term>
      */
     private static array $dictionary;
 
@@ -36,7 +36,7 @@ class Cache
     }
 
     /**
-     * @return Definition[]
+     * @return Term[]
      */
     public static function getParsedDictionary(): array
     {
