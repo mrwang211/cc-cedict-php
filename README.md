@@ -1,6 +1,8 @@
 # CC-CEDICT php
 
-Parser and downloader for the CC-CEDICT chinese dictionary https://www.mdbg.net/chinese/dictionary?page=cedict
+This library helps with downloading and parsing [CC-CEDICT](https://www.mdbg.net/chinese/dictionary?page=cc-cedict),
+a Chinese-English dictionary maintained by MDBG and contributors.
+CC-CEDICT is licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 
 ## Installation
 
@@ -14,13 +16,10 @@ composer require mrwang211/cc-cedict-php
 
 TODO
 
-[//]: # (```php)
-
-[//]: # ($ccCedictPhp = new Mrwang211\CcCedictPhp&#40;&#41;;)
-
-[//]: # (echo $ccCedictPhp->echoPhrase&#40;'Hello, Mrwang211!'&#41;;)
-
-[//]: # (```)
+[//]: # "```php"
+[//]: # "$ccCedictPhp = new Mrwang211\\CcCedictPhp();"
+[//]: # "echo $ccCedictPhp->echoPhrase('Hello, Mrwang211!');"
+[//]: # "```"
 
 ## Testing
 
@@ -43,6 +42,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [mrwang211](https://github.com/mrwang211)
+- [CC-CEDICT](https://www.mdbg.net/chinese/dictionary?page=cc-cedict)
 - [All Contributors](../../contributors)
 
 ## License
